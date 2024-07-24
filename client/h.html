@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Cards</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+    <div id="employee-cards-container"></div>
+    <script>
+        // Function to create and display employee cards
+        function createEmployeeCards(employees) {
+            const container = document.getElementById('employee-cards-container');
+
+            employees.forEach(employee => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                const img = document.createElement('img');
+                img.src = `images/${employee.epf_number}.jpg`;
+                img.alt = 'profileCard';
+                card.appendChild(img);
+
+                const name = document.createElement('h4');
+                name.textContent = employee.full_name;
+                card.appendChild(name);
+
+                const epf = document.createElement('h4');
+                epf.textContent = `EPF NO: ${employee.epf_number}`;
+                card.appendChild(epf);
+
+                container.appendChild(card);
+            });
+        }
+
+        // Function to fetch employee data from API
+        async function fetchEmployees() {
+            const response = await fetch('http://localhost:5000/api/employees/search-employees', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ line: 'IMP' })
+            });
+
+            if (response.ok) {
+                const employees = await response.json();
+                createEmployeeCards(employees);
+            } else {
+                console.error('Failed to fetch employees:', response.statusText);
+            }
+        }
+
+        // Fetch employees on page load
+        window.onload = fetchEmployees;
+    </script>
+</body>
+</html>
