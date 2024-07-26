@@ -85,14 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Please select both packing item and type.');
         }
     });
-    secondPageNextBtn.addEventListener('click', () => {
-        console.log('Navigating to packing.html');
-        window.location.href = 'packing.html';
-    });
+    // secondPageNextBtn.addEventListener('click', () => {
+    //     console.log('Navigating to packing.html');
+    //     window.location.href = 'fourthPage.html';
+    // });
     
 });
 
 function h() {
     console.log('Navigating to packing.html');
-    window.location.href = 'packing.html';
+    window.location.href = 'fourthPage.html';
 }

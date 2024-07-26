@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const epfNumberSelect = document.getElementById('epfNumber');
     const fullNameSelect = document.getElementById('fullName');
 
-    
     // Fetch line
     fetch('http://127.0.0.1:5000/api/employees/line')
         .then(response => response.json())
@@ -72,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 })
                 .catch(error => console.error('Error fetching EPF Number:', error));
-                
         }
     });
 
@@ -105,8 +103,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
-
-for (let i = 0; i < 10; i++) {
-
-    console.log(i);
-}

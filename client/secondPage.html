@@ -3,28 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Operator Task Form</title>
+    <title>Daily Production Data Updater</title>
     <link rel="stylesheet" href="CSS/styles.css">
 </head>
 <body>
-    <h1>Operator Task Form</h1>
-    <form id="taskForm">
-        <label for="date">නිෂ්පාදිත දිනය</label>
-        <input type="date" id="date" name="date">
-        
-        <label for="division-section">නිෂ්පාදන අංශය</label>
-        <select id="division-section" name="division-section" required>
-            <option value="">Select Division Section</option>
-            <option value="Machine">Machine</option>
-            <option value="Packing">Packing</option>
-            <option value="Other">Other</option>
-        </select>
+    <h1>Daily Production Data Updater</h1>
+    <h2>Atlas Axillia</h2>
 
-        <button type="submit">Submit</button>
+    <form id="taskForm">
+        <label for="line">Select Line:</label>
+        <div id="lineOptions" class="line-options"></div>
     </form>
-        <button id="secondPageNextBtn" onclick="h()">Next Page</button>
-       
-    <script src="JS/packing.js"></script>
-    
+
+    <div id="employee-cards-container"></div>
+
+    <script src="JS/employees.js"></script>
+    <script src="JS/secondPage.js"></script>
 </body>
 </html>
