@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle "Select Other Profile" button click
     selectOtherProfileBtn.addEventListener('click', () => {
-        localStorage.removeItem('profileData'); // Remove profile data from local storage
-        window.location.href = 'secondPage.html'; // Redirect to second page
+        // localStorage.removeItem('profileData'); // Remove profile data from local storage
+        window.location.href = 'otherProfile.html'; // Redirect to second page
     });
 
     // Load profile data from local storage and update the dropdown

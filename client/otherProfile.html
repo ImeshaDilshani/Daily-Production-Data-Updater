@@ -1,4 +1,26 @@
-document.addEventListener('DOMContentLoaded', () => {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Production Data Updater</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+    <h1>Daily Production Data Updater</h1>
+    <h2>Atlas Axillia</h2>
+
+    <form id="taskForm">
+        <label for="line">Select Line:</label>
+        <div id="lineOptions" class="line-options"></div>
+    </form>
+
+    <div id="employee-cards-container"></div>
+
+    <script src="JS/employees.js"></script>
+    <!-- <script src="JS/secondPage.js"></script> -->
+     <script>
+        document.addEventListener('DOMContentLoaded', () => {
     
     const lineOptions = document.getElementById('lineOptions');
     const employeeCardsContainer = document.getElementById('employee-cards-container');
@@ -38,8 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (response.ok) {
             const employees = await response.json();
-            // Store the employee data in local storage
-            localStorage.setItem('employees', JSON.stringify(employees));
             createEmployeeCards(employees);
         } else {
             console.error('Failed to fetch employees:', response.statusText);
@@ -75,18 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Load employees from local storage on page load
-    const storedEmployees = localStorage.getItem('employees');
-    if (storedEmployees) {
-        createEmployeeCards(JSON.parse(storedEmployees));
-    }
-
-    
-
     // Handle card click
     function handleCardClick(employee) {
-        localStorage.setItem('selectedEmployee', JSON.stringify(employee));
+        // localStorage.setItem('selectedEmployee', JSON.stringify(employee));
         window.location.href = 'thirdPage.html'; // Redirect to next page
     }
-
 });
+
+     </script>
+</body>
+</html>
