@@ -3,6 +3,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const packingTypesSelect = document.getElementById('packingTypes');
     const submitBtn = document.getElementById('submitBtn');
     const secondPageNextBtn = document.getElementById('secondPageNextBtn');
+    const lineOptions = document.getElementById('lineOptions');
+
+    // Fetch line options and create checkboxes
+    fetch('http://127.0.0.1:5000/api/employees/line')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(item => {
+                const label = document.createElement('label');
+                const checkbox = document.createElement('input');
+
+                checkbox.type = 'checkbox';
+                checkbox.name = 'line';
+                checkbox.value = item.line;
+
+                label.appendChild(checkbox);
+                label.appendChild(document.createTextNode(item.line));
+                lineOptions.appendChild(label);
+
+                // Add event listener to checkboxes
+                checkbox.addEventListener('change', () => {
+                    if (checkbox.checked) {
+                        fetchEmployeesByLine(item.line); // Implement this function to fetch employees by line
+                    } else {
+                        // Handle unchecking if needed
+                    }
+                });
+            });
+        })
+        .catch(error => console.error('Error fetching lines:', error));
+
 
     // Fetch packing items
     fetch('http://127.0.0.1:5000/api/products/packing-items')

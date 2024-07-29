@@ -81,8 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
         createEmployeeCards(JSON.parse(storedEmployees));
     }
 
-    
-
     // Handle card click
     function handleCardClick(employee) {
         localStorage.setItem('selectedEmployee', JSON.stringify(employee));
