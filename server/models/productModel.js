@@ -22,6 +22,16 @@ class Product {
     return this.getDistinctValues('line');
   }
 
+  static async searchPackingItemsByLine(line) {
+        try {
+            const query = 'SELECT distinct packing_item FROM packing_items WHERE line = ?';
+            const [results] = await db.query(query, [line]);
+            return results;
+        } catch (error) {
+            throw new Error(`Error fetching packing items by line: ${error.message}`);
+        }
+    }
+
   static async search(packingItem = null, packingType = null, line = null) {
     try {
       let query = 'SELECT sap_code, packing_item, packing_type, description, line FROM packing_items';

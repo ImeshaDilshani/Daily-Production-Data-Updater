@@ -33,9 +33,22 @@ const searchProducts = async (req, res) => {
   }
 };
 
+const getPackingItemsByLine = async (req, res) => {
+    const { line } = req.query; 
+    console.log(line)
+    try {
+        const result = await Product.searchPackingItemsByLine(line);
+        res.json(result);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'Failed to fetch packing items by line' });
+    }
+};
+
 module.exports = {
   getAllPackingItems,
   getAllPackingTypes,
   getAllLines,
-  searchProducts
+  searchProducts,
+  getPackingItemsByLine
 };

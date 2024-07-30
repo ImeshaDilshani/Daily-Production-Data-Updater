@@ -4,35 +4,70 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = document.getElementById('submitBtn');
     const secondPageNextBtn = document.getElementById('secondPageNextBtn');
     const lineOptions = document.getElementById('lineOptions');
+    const repeatBtn = document.getElementById('repeatBtn');
+    const taskForm = document.getElementById('taskForm');
+    const maxForms = 5;
 
-    // Fetch line options and create checkboxes
-    fetch('http://127.0.0.1:5000/api/employees/line')
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(item => {
-                const label = document.createElement('label');
-                const checkbox = document.createElement('input');
+    let formCount = 1;
 
-                checkbox.type = 'checkbox';
-                checkbox.name = 'line';
-                checkbox.value = item.line;
+    // Function to add a new form section
+    function addFormSection() {
+        if (formCount < maxForms) {
+            formCount++;
+            const newFormSection = document.querySelector('.form-section').cloneNode(true);
+            newFormSection.querySelectorAll('input, select').forEach(element => element.value = ''); // Clear values
+            taskForm.insertBefore(newFormSection, repeatBtn);
+        } else {
+            alert('Maximum number of forms reached.');
+        }
+    }
 
-                label.appendChild(checkbox);
-                label.appendChild(document.createTextNode(item.line));
-                lineOptions.appendChild(label);
+    repeatBtn.addEventListener('click', addFormSection);
 
-                // Add event listener to checkboxes
-                checkbox.addEventListener('change', () => {
-                    if (checkbox.checked) {
-                        fetchEmployeesByLine(item.line); // Implement this function to fetch employees by line
-                    } else {
-                        // Handle unchecking if needed
-                    }
-                });
+    fetch('http://127.0.0.1:5000/api/products/lines')
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(item => {
+            const label = document.createElement('label');
+            const checkbox = document.createElement('input');
+
+            checkbox.type = 'checkbox';
+            checkbox.name = 'line';
+            checkbox.value = item.line;
+
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(item.line));
+            lineOptions.appendChild(label);
+
+            // Add event listener to checkboxes
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    fetchPackingItemsByLine(item.line);
+                } else {
+                    // Handle unchecking if needed
+                }
             });
-        })
-        .catch(error => console.error('Error fetching lines:', error));
+        });
+    })
+    .catch(error => console.error('Error fetching lines:', error));
 
+    function fetchPackingItemsByLine(line) {
+        // Fetch packing items by line
+        fetch(`http://127.0.0.1:5000/api/products/packing-items-by-line?line=${line}`)
+            .then(response => response.json())
+            .then(data => {
+                const packingItemsSelect = document.getElementById('packingItems');
+                packingItemsSelect.innerHTML = '<option value="">Select Packing Item</option>'; // Clear previous options
+    
+                data.forEach(item => {
+                    const option = document.createElement('option');
+                    option.value = item.packing_item;
+                    option.textContent = item.packing_item;
+                    packingItemsSelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error fetching packing items:', error));
+    }
 
     // Fetch packing items
     fetch('http://127.0.0.1:5000/api/products/packing-items')
