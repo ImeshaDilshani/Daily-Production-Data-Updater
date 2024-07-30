@@ -2,31 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const packingItemsSelect = document.getElementById('packingItems');
     const packingTypesSelect = document.getElementById('packingTypes');
     const submitBtn = document.getElementById('submitBtn');
-    const secondPageNextBtn = document.getElementById('secondPageNextBtn');
     const lineOptions = document.getElementById('lineOptions');
-    const repeatBtn = document.getElementById('repeatBtn');
-    const taskForm = document.getElementById('taskForm');
-    const maxForms = 5;
-
-    let formCount = 1;
-
-    // Function to add a new form section
-    function addFormSection() {
-        if (formCount < maxForms) {
-            formCount++;
-            const newFormSection = document.querySelector('.form-section').cloneNode(true);
-            newFormSection.querySelectorAll('input, select').forEach(element => element.value = ''); // Clear values
-            taskForm.insertBefore(newFormSection, repeatBtn);
-        } else {
-            alert('Maximum number of forms reached.');
-        }
-    }
-
-    repeatBtn.addEventListener('click', addFormSection);
+    
 
     fetch('http://127.0.0.1:5000/api/products/lines')
     .then(response => response.json())
-    .then(data => {
+    .then(data => { 
         data.forEach(item => {
             const label = document.createElement('label');
             const checkbox = document.createElement('input');
@@ -150,11 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Please select both packing item and type.');
         }
     });
-    // secondPageNextBtn.addEventListener('click', () => {
-    //     console.log('Navigating to packing.html');
-    //     window.location.href = 'fourthPage.html';
-    // });
-    
 });
 
 function h() {
