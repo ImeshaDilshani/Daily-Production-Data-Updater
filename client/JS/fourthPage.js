@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetch('http://127.0.0.1:5000/api/products/lines')
     .then(response => response.json())
-    .then(data => { 
+    .then(data => {
         data.forEach(item => {
             const label = document.createElement('label');
             const checkbox = document.createElement('input');
