@@ -1,8 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const submitBtn = document.getElementById('submitBtn');
+    // const submitBtn = document.getElementById('submitBtn');
     const repeatBtn = document.getElementById('repeatBtn');
     const lineOptionsTemplate = document.getElementById('lineOptions');
     const taskForm = document.getElementById('taskForm');
+
+    // Event listener for Add New button
+    repeatBtn.addEventListener('click', () => {
+        const currentFormsCount = document.querySelectorAll('.dynamic-form').length;
+        if (currentFormsCount < 4) { // Limit to 5 forms
+            createNewForm();
+        } else {
+            alert('You can add a maximum of 5 forms.');
+        }
+    });
 
     // Function to create a new set of form elements
     function createNewForm() {
@@ -104,38 +114,30 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error fetching packing items:', error));
     }
 
-    // Event listener for Add New button
-    repeatBtn.addEventListener('click', () => {
-        const currentFormsCount = document.querySelectorAll('.dynamic-form').length;
-        if (currentFormsCount < 4) { // Limit to 5 forms
-            createNewForm();
-        } else {
-            alert('You can add a maximum of 5 forms.');
-        }
-    });
 
-    // Handle form submission
-    submitBtn.addEventListener('click', () => {
-        const forms = document.querySelectorAll('.dynamic-form');
-        const formData = [];
 
-        forms.forEach(form => {
-            const packingItemsSelect = form.querySelector('.packing-items');
-            const packingTypesSelect = form.querySelector('.packing-types');
-            const packingQtyInput = form.querySelector('.packing-qty');
-            const packingHrsInput = form.querySelector('.packing-hrs');
+    // // Handle form submission
+    // submitBtn.addEventListener('click', () => {
+    //     const forms = document.querySelectorAll('.dynamic-form');
+    //     const formData = [];
 
-            const data = {
-                packingItem: packingItemsSelect.value,
-                packingType: packingTypesSelect.value,
-                packingQty: packingQtyInput.value,
-                packingHrs: packingHrsInput.value
-            };
-            formData.push(data);
-        });
+    //     forms.forEach(form => {
+    //         const packingItemsSelect = form.querySelector('.packing-items');
+    //         const packingTypesSelect = form.querySelector('.packing-types');
+    //         const packingQtyInput = form.querySelector('.packing-qty');
+    //         const packingHrsInput = form.querySelector('.packing-hrs');
 
-        // Example of what to do with formData:
-        console.log('Form Data:', formData);
-        // Send formData to server or process as needed
-    });
+    //         const data = {
+    //             packingItem: packingItemsSelect.value,
+    //             packingType: packingTypesSelect.value,
+    //             packingQty: packingQtyInput.value,
+    //             packingHrs: packingHrsInput.value
+    //         };
+    //         formData.push(data);
+    //     });
+
+    //     // Example of what to do with formData:
+    //     console.log('Form Data:', formData);
+    //     // Send formData to server or process as needed
+    // });
 });

@@ -130,6 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Please select both packing item and type.');
         }
     });
+    
 });
 
 function h() {
