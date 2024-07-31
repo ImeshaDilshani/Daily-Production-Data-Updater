@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const packingTypesSelect = document.getElementById('packingTypes');
     const submitBtn = document.getElementById('submitBtn');
     const lineOptions = document.getElementById('lineOptions');
-    
 
     fetch('http://127.0.0.1:5000/api/products/lines')
     .then(response => response.json())
