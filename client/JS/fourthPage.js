@@ -103,33 +103,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Handle form submission
-    submitBtn.addEventListener('click', () => {
-        const selectedPackingItem = packingItemsSelect.value;
-        const selectedPackingType = packingTypesSelect.value;
+    // // Handle form submission
+    // submitBtn.addEventListener('click', () => {
+    //     const selectedPackingItem = packingItemsSelect.value;
+    //     const selectedPackingType = packingTypesSelect.value;
 
-        if (selectedPackingItem && selectedPackingType) {
-            const requestData = {
-                packingItem: selectedPackingItem,
-                packingType: selectedPackingType
-            };
+    //     if (selectedPackingItem && selectedPackingType) {
+    //         const requestData = {
+    //             packingItem: selectedPackingItem,
+    //             packingType: selectedPackingType
+    //         };
 
-            fetch('http://127.0.0.1:5000/api/products/search-products', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestData)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Search Results:', data);
-                })
-                .catch(error => console.error('Error fetching search results:', error));
-        } else {
-            alert('Please select both packing item and type.');
-        }
-    });
+    //         fetch('http://127.0.0.1:5000/api/products/search-products', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify(requestData)
+    //         })
+    //             .then(response => response.json())
+    //             .then(data => {
+    //                 console.log('Search Results:', data);
+    //             })
+    //             .catch(error => console.error('Error fetching search results:', error));
+    //     } else {
+    //         alert('Please select both packing item and type.');
+    //     }
+    // });
     
 });
 
