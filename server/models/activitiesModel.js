@@ -11,19 +11,8 @@ class Activities {
     }
 
     static async getAllActivityName() {
-        return this.getDistinctValues('activities'); 
-    }
-
-    static async search(ActivityName = null) {
-        try {
-            let query = 'select activity_name from activities'
-            const params = [];
-            const [results] = await db.query(query, params);
-            return results;
-        } catch (error) {
-            throw new Error(`Error searching Activities:${error.message}`);
-        }
+        return this.getDistinctValues('activity_name');
     }
 }
 
-module.exports = Activities; 
+module.exports = Activities;
