@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+
     const packingItemsSelect = document.getElementById('packingItems');
     const packingTypesSelect = document.getElementById('packingTypes');
     const submitBtn = document.getElementById('submitBtn');
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //     }
     // });
     
-});
+
 
 function h() {
     console.log('Navigating to packing.html');

@@ -3,7 +3,7 @@ function lossHoursPageNextBtn() {
     window.location.href = 'LossHours.html';
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+
     fetch('http://localhost:5000/api/activities/activities-item')
         .then(response => {
             if (!response.ok) {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
         })
         .then(data => {
-            console.log('Response data:', data); // Log the response data
+            // console.log('Response data:', data); // Log the response data
             if (Array.isArray(data)) {
                 const select = document.getElementById('additionalAction');
                 data.forEach(item => {
@@ -23,11 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             } else {
                 console.error('Expected an array but got:', data);
-                alert('Failed to load activities. Please try again later.');
+                // alert('Failed to load activities. Please try again later.');
             }
         })
         .catch(error => {
             console.error('Failed to load activities:', error);
-            alert('Failed to load activities. Please try again later.');
+            // alert('Failed to load activities. Please try again later.');
         });
-});
+
+        

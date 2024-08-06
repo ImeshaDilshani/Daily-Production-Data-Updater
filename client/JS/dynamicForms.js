@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+
     // const submitBtn = document.getElementById('submitBtn');
     const repeatBtn = document.getElementById('repeatBtn');
     const lineOptionsTemplate = document.getElementById('lineOptions');
@@ -114,8 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error fetching packing items:', error));
     }
 
-
-
     // // Handle form submission
     // submitBtn.addEventListener('click', () => {
     //     const forms = document.querySelectorAll('.dynamic-form');
@@ -140,4 +138,4 @@ document.addEventListener('DOMContentLoaded', () => {
     //     console.log('Form Data:', formData);
     //     // Send formData to server or process as needed
     // });
-});
+
