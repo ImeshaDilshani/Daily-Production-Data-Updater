@@ -22,6 +22,7 @@
             // Add event listener to checkboxes
             checkbox.addEventListener('change', () => {
                 if (checkbox.checked) {
+                    console.log(`Checkbox checked: ${item.line}`);
                     fetchPackingItemsByLine(item.line);
                 } else {
                     // Handle unchecking if needed
@@ -32,14 +33,26 @@
     .catch(error => console.error('Error fetching lines:', error));
 
     function fetchPackingItemsByLine(line) {
-        // Fetch packing items by line
+        console.log('Fetching packing items for line:', line);
         fetch(`http://127.0.0.1:5000/api/products/packing-items-by-line?line=${line}`)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
             .then(data => {
+                console.log('Received packing items data:', data);
                 const packingItemsSelect = document.getElementById('packingItems');
                 packingItemsSelect.innerHTML = '<option value="">Select Packing Item</option>'; // Clear previous options
+                
+                if (data.length === 0) {
+                    console.log('No packing items found for the selected line');
+                    return;
+                }
     
                 data.forEach(item => {
+                    console.log('Adding item:', item.packing_item);
                     const option = document.createElement('option');
                     option.value = item.packing_item;
                     option.textContent = item.packing_item;
@@ -48,6 +61,7 @@
             })
             .catch(error => console.error('Error fetching packing items:', error));
     }
+    
 
     // Fetch packing items
     fetch('http://127.0.0.1:5000/api/products/packing-items')

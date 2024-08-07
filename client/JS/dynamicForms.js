@@ -97,14 +97,27 @@
     }
 
     // Function to fetch packing items by line
-    function fetchPackingItemsByLine(line, form) {
+    function fetchPackingItemsByLine(line) {
+        console.log('Fetching packing items for line:', line);
         fetch(`http://127.0.0.1:5000/api/products/packing-items-by-line?line=${line}`)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
             .then(data => {
-                const packingItemsSelect = form.querySelector('.packing-items');
+                console.log('Received packing items data:', data);
+                const packingItemsSelect = document.getElementById('packingItems');
                 packingItemsSelect.innerHTML = '<option value="">Select Packing Item</option>'; // Clear previous options
-
+                
+                if (data.length === 0) {
+                    console.log('No packing items found for the selected line');
+                    return;
+                }
+    
                 data.forEach(item => {
+                    console.log('Adding item:', item.packing_item);
                     const option = document.createElement('option');
                     option.value = item.packing_item;
                     option.textContent = item.packing_item;
@@ -113,6 +126,7 @@
             })
             .catch(error => console.error('Error fetching packing items:', error));
     }
+    
 
     // // Handle form submission
     // submitBtn.addEventListener('click', () => {

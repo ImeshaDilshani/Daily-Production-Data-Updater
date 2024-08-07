@@ -35,7 +35,7 @@ const searchProducts = async (req, res) => {
 
 const getPackingItemsByLine = async (req, res) => {
     const { line } = req.query; 
-    // console.log(line)
+    console.log(line)
     try {
         const result = await Product.searchPackingItemsByLine(line);
         res.json(result);
