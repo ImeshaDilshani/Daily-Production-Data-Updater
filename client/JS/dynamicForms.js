@@ -14,47 +14,50 @@
         }
     });
 
-    // Function to create a new set of form elements
     function createNewForm() {
         const newForm = document.createElement('div');
         newForm.classList.add('dynamic-form');
-
+    
         newForm.innerHTML = `
             <label>Select Line:</label>
             <div class="line-options">${lineOptionsTemplate.innerHTML}</div>
             <br>
+    
             <label for="packingItems">Packing Item:</label>
             <select class="packing-items">
                 <option value="">Select Packing Item</option>
             </select>
             <br>
+    
             <label for="packingTypes">Packing Type:</label>
             <select class="packing-types">
                 <option value="">Select Packing Type</option>
             </select>
             <br>
+    
             <label for="packingQty">Packing Qty:</label>
             <input type="number" class="packing-qty" name="packingQty" required>
             <br>
+    
             <label for="packingHrs">Packing Hrs:</label>
             <input type="number" class="packing-hrs" name="packingHrs" required>
             <br>
         `;
-
+    
         taskForm.insertBefore(newForm, repeatBtn);
-
+    
         // Add event listener to checkboxes in the new form
         const checkboxes = newForm.querySelectorAll('input[name="line"]');
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
                 if (checkbox.checked) {
-                    fetchPackingItemsByLine(checkbox.value, newForm);
+                    fetchPackingItemsByLine(checkbox.value, newForm); // Pass newForm as context
                 } else {
                     // Handle unchecking if needed
                 }
             });
         });
-
+    
         // Populate packing items in the new form
         const newPackingItemsSelect = newForm.querySelector('.packing-items');
         fetch('http://127.0.0.1:5000/api/products/packing-items')
@@ -68,7 +71,7 @@
                 });
             })
             .catch(error => console.error('Error fetching packing items:', error));
-
+    
         // Event listener for packing item selection in the new form
         newPackingItemsSelect.addEventListener('change', () => {
             const selectedItem = newPackingItemsSelect.value;
@@ -95,61 +98,35 @@
             }
         });
     }
-
-    // Function to fetch packing items by line
-    function fetchPackingItemsByLine(line) {
-        console.log('Fetching packing items for line:', line);
-        fetch(`http://127.0.0.1:5000/api/products/packing-items-by-line?line=${line}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Received packing items data:', data);
-                const packingItemsSelect = document.getElementById('packingItems');
-                packingItemsSelect.innerHTML = '<option value="">Select Packing Item</option>'; // Clear previous options
-                
-                if (data.length === 0) {
-                    console.log('No packing items found for the selected line');
-                    return;
-                }
     
-                data.forEach(item => {
-                    console.log('Adding item:', item.packing_item);
-                    const option = document.createElement('option');
-                    option.value = item.packing_item;
-                    option.textContent = item.packing_item;
-                    packingItemsSelect.appendChild(option);
-                });
-            })
-            .catch(error => console.error('Error fetching packing items:', error));
-    }
-    
+    function fetchPackingItemsByLine(line, formContext) {
+    console.log('Fetching packing items for line:', line);
+    fetch(`http://127.0.0.1:5000/api/products/packing-items-by-line?line=${line}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Received packing items data:', data);
+            const packingItemsSelect = formContext.querySelector('.packing-items');
+            packingItemsSelect.innerHTML = '<option value="">Select Packing Item</option>'; // Clear previous options
 
-    // // Handle form submission
-    // submitBtn.addEventListener('click', () => {
-    //     const forms = document.querySelectorAll('.dynamic-form');
-    //     const formData = [];
+            if (data.length === 0) {
+                console.log('No packing items found for the selected line');
+                return;
+            }
 
-    //     forms.forEach(form => {
-    //         const packingItemsSelect = form.querySelector('.packing-items');
-    //         const packingTypesSelect = form.querySelector('.packing-types');
-    //         const packingQtyInput = form.querySelector('.packing-qty');
-    //         const packingHrsInput = form.querySelector('.packing-hrs');
+            data.forEach(item => {
+                console.log('Adding item:', item.packing_item);
+                const option = document.createElement('option');
+                option.value = item.packing_item;
+                option.textContent = item.packing_item;
+                packingItemsSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching packing items:', error));
+}
 
-    //         const data = {
-    //             packingItem: packingItemsSelect.value,
-    //             packingType: packingTypesSelect.value,
-    //             packingQty: packingQtyInput.value,
-    //             packingHrs: packingHrsInput.value
-    //         };
-    //         formData.push(data);
-    //     });
-
-    //     // Example of what to do with formData:
-    //     console.log('Form Data:', formData);
-    //     // Send formData to server or process as needed
-    // });
 

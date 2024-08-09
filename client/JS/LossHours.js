@@ -3,7 +3,6 @@ function lossHoursPageNextBtn() {
     window.location.href = 'LossHours.html';
 }
 
-
     fetch('http://localhost:5000/api/activities/activities-item')
         .then(response => {
             if (!response.ok) {
@@ -31,4 +30,3 @@ function lossHoursPageNextBtn() {
             // alert('Failed to load activities. Please try again later.');
         });
 
-        
