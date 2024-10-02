@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Packing Item and Type</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="CSS/newstyles.css">
+</head>
+<body>
+    <h1>දෛනික නිෂ්පාදන සටහන</h1>
+    <h2>Daily Production Update</h2>
+
+    <!-- Profile Icon in the Top Right Corner -->
+    <div id="profile-icon" class="profile-icon">
+        <img src="images/3999.jpg" alt="Profile Icon">
+    </div>
+
+    <!-- Profile Info Dropdown -->
+    <div id="profile-dropdown" class="profile-dropdown">
+        <img id="profile-img" src="images/9548.jpg" alt="Profile Image">
+        <p id="profile-name">Full Name</p>
+        <p id="profile-epf">EPF No: 123456</p>
+        <button id="selectOtherProfileBtn">Select Other Profile</button>
+    </div>
+
+    <form id="taskForm">
+        
+    <label for="additionalAction">අමතර ක්‍රියාව</label>
+    <select id="additionalAction">
+        <option value="">Select Your Answer</option>
+    </select>
+    <br>
+
+    <label for="LTNormalHours">Loss Time සාමාන්‍ය පැය</label>
+    <input type="time" id="LTNormalHours" name="LTNormalHours" placeholder="The value must be a number" required>
+    <br>
+
+    <label for="LossTimeOT">Loss Time OT</label>
+    <input type="time" id="LossTimeOT" name="LossTimeOT" placeholder="The value must be a number" required>
+
+    <button type="button" id="repeatActionBtn">Add New</button>
+    <br>
+    <button type="button" id="submitBtn">Submit</button>
+
+    </form>
+
+    <script src="JS/LossHours.js"></script>
+    <script src="JS/profileDropdown.js"></script>
+    <script src="JS/dynamicActionForms.js"></script>
+    <!-- <script src="JS/formSubmit.js"></script> -->
+    <script src="JS/sessionStorageHandler.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Production Data Updater</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+
+    <form id="taskForm">
+        <label for="line">Select Line:</label>
+        <div id="lineOptions" class="line-options"></div>
+    </form>
+
+    <div id="employee-cards-container"></div>
+
+    <script src="JS/employees.js"></script>
+    <!-- <script src="JS/secondPage.js"></script> -->
+     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    
+    const lineOptions = document.getElementById('lineOptions');
+    const employeeCardsContainer = document.getElementById('employee-cards-container');
+
+    // Fetch line options and create radio buttons
+    fetch('http://127.0.0.1:5000/api/employees/line')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(item => {
+                const label = document.createElement('label');
+                const radio = document.createElement('input');
+
+                radio.type = 'radio';
+                radio.name = 'line';
+                radio.value = item.line;
+
+                label.appendChild(radio);
+                label.appendChild(document.createTextNode(item.line));
+                lineOptions.appendChild(label);
+
+                // Add event listener to radio buttons
+                radio.addEventListener('change', () => fetchEmployeesByLine(item.line));
+            });
+        })
+        .catch(error => console.error('Error fetching lines:', error));
+
+
+    // Function to fetch employee data based on selected line
+    async function fetchEmployeesByLine(line) {
+        const response = await fetch('http://127.0.0.1:5000/api/employees/search-employees', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ line })
+        });
+
+        if (response.ok) {
+            const employees = await response.json();
+            createEmployeeCards(employees);
+        } else {
+            console.error('Failed to fetch employees:', response.statusText);
+        }
+    }
+
+    // Function to create and display employee cards
+    function createEmployeeCards(employees) {
+
+        employeeCardsContainer.innerHTML = ''; // Clear previous cards
+
+        employees.forEach(employee => {
+
+            const card = document.createElement('div');
+            card.className = 'card';
+            
+            card.onclick = () => handleCardClick(employee);
+
+            const img = document.createElement('img');
+            img.src = `images/${employee.epf_number}.jpg`;
+            img.alt = 'profileCard';
+            card.appendChild(img);
+
+            const name = document.createElement('h4');
+            name.textContent = employee.full_name;
+            card.appendChild(name);
+
+            const epf = document.createElement('h4');
+            epf.textContent = `EPF NO: ${employee.epf_number}`;
+            card.appendChild(epf);
+
+            employeeCardsContainer.appendChild(card);
+        });
+    }
+
+    // Handle card click
+    function handleCardClick(employee) {
+        // localStorage.setItem('selectedEmployee', JSON.stringify(employee));
+        window.location.href = 'thirdPage.html'; // Redirect to next page
+    }
+});
+
+     </script>
+</body>
+</html>

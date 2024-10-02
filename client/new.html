@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Admin</title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="CSS/newstyles.css">
+    
+</head>
+<body>
+    <h1>Production Data Admin Dashboard</h1>
+    
+    <div class="container">
+
+        <!-- <button id="exportButton">Export to Excel</button> -->
+
+            <!-- Line Selection Dropdown -->
+            <div id="lineOptions" class="line-options"></div>
+
+            <!-- EPF Number Selection Dropdown -->
+            <div id="eptNumberOptions" class="eptNumber-Options"></div>
+
+        <table class="table table-bordered" id="dataTable">
+            <thead>
+                <tr>
+                    <th>EPF Number</th>
+                    <th>Date of Production</th>
+                    <th>Production Division</th>
+                    <th>SAP Code</th>
+                    <th>Packing Qty</th>
+                    <th>Packing Hrs</th>
+                    <th>Additional Action</th>
+                    <th>Loss Time Normal Hrs</th>
+                    <th>Loss Time OT</th>
+                    <th>Packing Item</th>
+                    <th>Packing Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- <script>
+        async function fetchData() {
+            const response = await fetch('http://localhost:5000/api/get-data');
+            const data = await response.json();
+            const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+
+            data.forEach(item => {
+                const row = tableBody.insertRow();
+                Object.values(item).forEach(text => {
+                    const cell = row.insertCell();
+                    cell.textContent = text;
+                });
+            });
+        }
+
+        document.getElementById('exportButton').addEventListener('click', function() {
+            window.location.href = 'http://localhost:5000/api/export-excel';
+        });
+
+        // Fetch data when the page loads
+        fetchData();
+    </script>  -->
+    <script src="JS/admin.js"></script>
+</body>
+</html>

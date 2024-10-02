@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        button {
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .edit-button {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <!-- <button id="exportButton">Export to Excel</button> -->
+    <button id="exportButton">Export to Excel</button>
+    
+    <div id="lineOptions" class="line-options"></div>
+
+    <!-- EPF Number Selection Dropdown -->
+    <div id="eptNumberOptions" class="eptNumber-Options"></div>
+
+    <table id="productTable">
+        <thead>
+            <tr>
+                <th>EPF Number</th>
+                <th>Date of Production</th>
+                <th>Production Division</th>
+                <th colspan="7">SAP Code</th>
+                <th colspan="7">Packing Qty</th>
+                <th colspan="7">Packing Hrs</th>
+                <th colspan="7">Additional Action</th>
+                <th colspan="7">Loss Time Normal Hrs</th>
+                <th colspan="7">Loss Time OT</th>
+                <th colspan="7">Packing Item</th>
+                <th colspan="7">Packing Type</th>
+                <!-- <th>SAP Code</th><th>Packing Qty</th><th>Packing Hrs</th><th>Additional Action</th><th>Loss Time Normal Hrs</th><th>Loss Time OT</th><th>Packing Item</th><th>Packing Type</th>
+                <th>SAP Code</th><th>Packing Qty</th><th>Packing Hrs</th><th>Additional Action</th><th>Loss Time Normal Hrs</th><th>Loss Time OT</th><th>Packing Item</th><th>Packing Type</th>
+                <th>SAP Code</th><th>Packing Qty</th><th>Packing Hrs</th><th>Additional Action</th><th>Loss Time Normal Hrs</th><th>Loss Time OT</th><th>Packing Item</th><th>Packing Type</th>
+                <th>SAP Code</th><th>Packing Qty</th><th>Packing Hrs</th><th>Additional Action</th><th>Loss Time Normal Hrs</th><th>Loss Time OT</th><th>Packing Item</th><th>Packing Type</th>
+                <th>SAP Code</th><th>Packing Qty</th><th>Packing Hrs</th><th>Additional Action</th><th>Loss Time Normal Hrs</th><th>Loss Time OT</th><th>Packing Item</th><th>Packing Type</th>
+                <th>SAP Code</th><th>Packing Qty</th><th>Packing Hrs</th><th>Additional Action</th><th>Loss Time Normal Hrs</th><th>Loss Time OT</th><th>Packing Item</th><th>Packing Type</th>
+                <th>SAP Code</th><th>Packing Qty</th><th>Packing Hrs</th><th>Additional Action</th><th>Loss Time Normal Hrs</th><th>Loss Time OT</th><th>Packing Item</th><th>Packing Type</th>
+                <th>SAP Code</th><th>Packing Qty</th><th>Packing Hrs</th><th>Additional Action</th><th>Loss Time Normal Hrs</th><th>Loss Time OT</th><th>Packing Item</th><th>Packing Type</th> -->
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th>
+                <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th>
+                <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th>
+                <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th>
+                <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th>
+                <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th>
+                <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th>
+                <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted here dynamically -->
+        </tbody>
+    </table>
+    <script>
+        document.getElementById('exportButton').addEventListener('click', function() {
+            window.location.href = 'http://localhost:5000/api/export-excel';
+        });
+
+    </script>
+
+    <script src="JS/admin/displayPage.js"></script>
+    <script src="JS/admin/admin.js"></script>
+     
+</body>
+</html>

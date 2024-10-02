@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Task Form</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="CSS/newstyles.css">
+</head>
+<body>
+    <h1>දෛනික නිෂ්පාදන සටහන</h1>
+    <h2>Daily Production Update</h2>
+    
+    <!-- Profile Icon in the Top Right Corner -->
+    <div id="profile-icon" class="profile-icon">
+        <img src="images/3999.jpg" alt="Profile Icon">
+    </div>
+
+    <!-- Profile Info Dropdown -->
+    <div id="profile-dropdown" class="profile-dropdown">
+        <img id="profile-img" src="images/3999.jpg" alt="Profile Image">
+        <p id="profile-name">ABC</p>
+        <p id="profile-epf">EPF No: 123456</p>
+        <button id="selectOtherProfileBtn">Select Other Profile</button>
+    </div>
+
+    <form id="taskForm">
+        <label for="date">නිෂ්පාදිත දිනය</label>
+        <input type="date" id="date" name="date">
+
+        <label for="division-section">නිෂ්පාදන අංශය</label>
+        <select id="division-section" name="division-section" required>
+            <option value="">Select Division Section</option>
+            <option value="Machine">Machine</option>
+            <option value="Packing">Packing</option>
+            <option value="Other">Other</option>
+        </select>
+    </form>
+    
+    <button id="secondPageNextBtn" onclick="h()">Next Page</button>
+
+    <script src="JS/fourthPage.js"></script>
+    <script src="JS/profileDropdown.js"></script>
+    <script src="JS/LossHours.js"></script>
+    <script src="JS/thirdPage.js"></script>
+</body>
+</html>

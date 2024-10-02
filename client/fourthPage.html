@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Packing Item and Type</title>
+    <!-- <link rel="stylesheet" href="CSS/styles.css"> -->
+    <link rel="stylesheet" href="CSS/newstyles.css">
+</head>
+<body>
+    <h1>දෛනික නිෂ්පාදන සටහන</h1>
+    <h2>Daily Production Update</h2>
+
+    <!-- Profile Icon in the Top Right Corner -->
+    <!-- <div id="profile-icon" class="profile-icon">
+        <img src="images/3999.jpg" alt="Profile Icon">
+    </div> -->
+
+    <!-- Profile Info Dropdown -->
+    <!-- <div id="profile-dropdown" class="profile-dropdown">
+        <img id="profile-img" src="images/9548.jpg" alt="Profile Image">
+        <p id="profile-name">Full Name</p>
+        <p id="profile-epf">EPF No: 123456</p>
+        <button id="selectOtherProfileBtn">Select Other Profile</button>
+    </div> -->
+
+    <form id="taskForm" >
+        <label for="line">ඔයා වැඩ කරපු Line එක තෝරන්න</label>
+        <div id="lineOptions" class="line-options"></div>
+
+    <label for="packingItems">Packing Item:</label>
+    <select id="packingItems">
+        <option value="">Select Packing Item</option>
+    </select>
+    <br>
+
+    <label for="packingTypes">Packing Type:</label>
+    <select id="packingTypes">
+        <option value="">Select Packing Type</option>
+    </select>
+    <br>
+
+    <label for="packingQty">Packing Qty:</label>
+    <input type="number" id="packingQty" name="packingQty" required>
+    <br>
+
+    <label for="packingHrs">Packing Hrs:</label>
+    <input type="time" id="packingHrs" name="packingHrs" required>
+    <br>
+
+    <button type="button" id="repeatBtn">Add New</button>
+    <br>
+    
+    <button id="lhPageNextBtn">Next Page</button>
+    
+    </form>
+
+    <script src="JS/fourthPage.js"></script>
+    <script src="JS/profileDropdown.js"></script>
+    <!-- <script src="JS/dynamicForms.js"></script> -->
+    <script src="JS/LossHours.js"></script>
+    <script src="JS/session Storage Handler Packing Data.js"></script>
+    
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Export and Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        #data-table {
+            display: none;
+        }
+        button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Production Data Export and Display</h2>
+    <button id="fetch-data-btn">Fetch and Display Data</button>
+    <button id="download-excel-btn">Download as Excel</button>
+    <div id="eptNumberOptions" class="eptNumber-Options"></div>
+
+    
+
+    <!-- Table to Display Fetched Data -->
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>EPF Number</th>
+                <th>Date of Production</th>
+                <th>Production Division</th>
+                <th>SAP Code</th>
+                <th>Packing Qty</th>
+                <th>Packing Hrs</th>
+                <th>Additional Action</th>
+                <th>Loss Time Normal Hrs</th>
+                <th>Loss Time OT</th>
+                <th>Packing Item</th>
+                <th>Packing Type</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Data will be inserted here dynamically -->
+        </tbody>
+    </table>
+
+    <script src="JS/admin/displayPage.js"></script>
+</body>
+</html>
