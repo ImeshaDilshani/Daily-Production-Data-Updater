@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Retrieve stored data from session storage
         const dateOfProduction = sessionStorage.getItem('date');
-        const divisionSection = sessionStorage.getItem('divisionSection');
+        const divisionSection = sessionStorage.getItem('divisionSection');s
         const packingHrs = JSON.parse(sessionStorage.getItem('packingHrs') || '[]');
         const packingQty = JSON.parse(sessionStorage.getItem('packingQty') || '[]');
         const sapCodes = JSON.parse(sessionStorage.getItem('sapCodes') || '[]');

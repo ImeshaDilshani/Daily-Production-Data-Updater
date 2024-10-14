@@ -4,12 +4,12 @@ document.getElementById('fetch-data-btn').addEventListener('click', async () => 
         // Fetch data from the API
         const response = await fetch('http://localhost:5000/api/get-data');
         const data = await response.json();
-        
+
         // Check if data exists
         if (data && data.length > 0) {
             const tableBody = document.getElementById('table-body');
             tableBody.innerHTML = ''; // Clear any existing data
-            
+
             // Insert rows into the table
             data.forEach(item => {
                 const row = `<tr>
