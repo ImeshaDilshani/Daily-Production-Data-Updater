@@ -14,6 +14,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+
 app.use('/api/products', productRoutes);
 app.use('/api/employees', employeesRoutes);
 app.use('/api/activities', activitiesRoutes);
@@ -23,6 +24,7 @@ app.use('/api', dataRetriveRoutes);
 
 // Routes
 app.use('/api/submit', productionDataRoutes);
+
 
 
 
