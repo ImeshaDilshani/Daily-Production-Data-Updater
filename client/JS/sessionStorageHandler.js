@@ -87,9 +87,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // Store arrays in session storage
-        sessionStorage.setItem('additionalAction', JSON.stringify(additionalActions));
-        sessionStorage.setItem('LTNormalHours', JSON.stringify(ltNormalHours));
-        sessionStorage.setItem('LossTimeOT', JSON.stringify(lossTimeOTs));
+        // sessionStorage.setItem('additionalAction', JSON.stringify(additionalActions));
+        // sessionStorage.setItem('LTNormalHours', JSON.stringify(ltNormalHours));
+        // sessionStorage.setItem('LossTimeOT', JSON.stringify(lossTimeOTs));
+        // Save each item in session storage with the required naming convention
+    additionalActions.forEach((action, index) => {
+        sessionStorage.setItem(`additional_action_${index + 1}`, action);
+    });
+    
+    ltNormalHours.forEach((hours, index) => {
+        sessionStorage.setItem(`loss_time_normal_${index + 1}`, hours);
+    });
+
+    lossTimeOTs.forEach((ot, index) => {
+        sessionStorage.setItem(`loss_time_ot_${index + 1}`, ot);
+    });
 
         console.log('Stored in sessionStorage:', {
             additionalAction: additionalActions,
@@ -129,7 +141,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Retrieve stored data from session storage
         const dateOfProduction = sessionStorage.getItem('date');
-        const divisionSection = sessionStorage.getItem('divisionSection');s
+        const divisionSection = sessionStorage.getItem('divisionSection');
+        
         const packingHrs = JSON.parse(sessionStorage.getItem('packingHrs') || '[]');
         const packingQty = JSON.parse(sessionStorage.getItem('packingQty') || '[]');
         const sapCodes = JSON.parse(sessionStorage.getItem('sapCodes') || '[]');

@@ -13,11 +13,6 @@ exports.submitProductionData = (req, res) => {
         res.status(201).json({ message: 'Production data saved successfully', data: result });
     });
     
-    // Add a catch-all route at the end of the middleware stack to handle any uncaught errors
-app.use((err, req, res, next) => {
-    console.error("Unhandled error:", err);
-    res.status(500).send({ error: 'Something went wrong!' });
-});
 
 };
 

@@ -81,20 +81,30 @@ async function savePackingDataToSession() {
         }
     }
 
-    // Store the arrays in sessionStorage
-    sessionStorage.setItem('packingItems', JSON.stringify(packingItemsArray));
-    sessionStorage.setItem('packingTypes', JSON.stringify(packingTypesArray));
-    sessionStorage.setItem('packingQty', JSON.stringify(packingQtyArray));
-    sessionStorage.setItem('packingHrs', JSON.stringify(packingHrsArray));
-    sessionStorage.setItem('sapCodes', JSON.stringify(sapCodesArray));
+    // // Store the arrays in sessionStorage
+    // sessionStorage.setItem('packingItems', JSON.stringify(packingItemsArray));
+    // sessionStorage.setItem('packingTypes', JSON.stringify(packingTypesArray));
+    // sessionStorage.setItem('packingQty', JSON.stringify(packingQtyArray));
+    // sessionStorage.setItem('packingHrs', JSON.stringify(packingHrsArray));
+    // sessionStorage.setItem('sapCodes', JSON.stringify(sapCodesArray));
 
-    console.log('Packing data stored in sessionStorage:', {
-        packingItems: packingItemsArray,
-        packingTypes: packingTypesArray,
-        packingQty: packingQtyArray,
-        packingHrs: packingHrsArray,
-        sapCodes: sapCodesArray
-    });
+    // console.log('Packing data stored in sessionStorage:', {
+    //     packingItems: packingItemsArray,
+    //     packingTypes: packingTypesArray,
+    //     packingQty: packingQtyArray,
+    //     packingHrs: packingHrsArray,
+    //     sapCodes: sapCodesArray
+    // });
+    // Store each array element in sessionStorage with individual keys
+    for (let i = 0; i < packingItemsArray.length; i++) {
+        sessionStorage.setItem(`packing_Items_${i + 1}`, packingItemsArray[i]);
+        sessionStorage.setItem(`packing_types_${i + 1}`, packingTypesArray[i]);
+        sessionStorage.setItem(`packing_qty_${i + 1}`, packingQtyArray[i]);
+        sessionStorage.setItem(`packing_hrs_${i + 1}`, packingHrsArray[i]);
+        sessionStorage.setItem(`sap_code_${i + 1}`, sapCodesArray[i]);
+    }
+
+    console.log('Packing data stored in sessionStorage with individual keys.');
 }
 
 // Attach the function to the Next Page button
