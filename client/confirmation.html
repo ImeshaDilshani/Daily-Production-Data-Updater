@@ -4,11 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="CSS/newstyles.css">
+    <!-- <link rel="stylesheet" href="CSS/newstyles.css"> -->
+    <style>
+        /* Center the content in the middle of the page */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 75vh; /* Full viewport height */
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Styling the container */
+        .container {
+            text-align: center;
+        }
+
+        /* Button styling */
+        #submitAnootherBtn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>You have successfully save data</h1>
-    <button id="submitAnootherBtn" onclick="submitAnotherBtn()">Submit Another</button>
+    <div class="container">
+        <h1>You have successfully saved the data</h1>
+        <button id="submitAnootherBtn" onclick="submitAnotherBtn()">Submit Another</button>
+    </div>
+    
     <script src="JS/lastPage.js"></script>
 </body>
 </html>

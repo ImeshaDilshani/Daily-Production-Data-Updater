@@ -86,11 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Store arrays in session storage
-        // sessionStorage.setItem('additionalAction', JSON.stringify(additionalActions));
-        // sessionStorage.setItem('LTNormalHours', JSON.stringify(ltNormalHours));
-        // sessionStorage.setItem('LossTimeOT', JSON.stringify(lossTimeOTs));
-        // Save each item in session storage with the required naming convention
+        
     additionalActions.forEach((action, index) => {
         sessionStorage.setItem(`additional_action_${index + 1}`, action);
     });
@@ -142,74 +138,214 @@ document.addEventListener('DOMContentLoaded', function () {
         // Retrieve stored data from session storage
         const dateOfProduction = sessionStorage.getItem('date');
         const divisionSection = sessionStorage.getItem('divisionSection');
-        
-        const packingHrs = JSON.parse(sessionStorage.getItem('packingHrs') || '[]');
-        const packingQty = JSON.parse(sessionStorage.getItem('packingQty') || '[]');
-        const sapCodes = JSON.parse(sessionStorage.getItem('sapCodes') || '[]');
-        const additionalAction = JSON.parse(sessionStorage.getItem('additionalAction') || '[]');
-        const ltNormalHours = JSON.parse(sessionStorage.getItem('LTNormalHours') || '[]');
-        const lossTimeOT = JSON.parse(sessionStorage.getItem('LossTimeOT') || '[]');
-        const packingItem = JSON.parse(sessionStorage.getItem('packingItems') || '[]');
-        const packingType = JSON.parse(sessionStorage.getItem('packingTypes') || '[]');
 
-        // Log data retrieved from storage
-        // console.log('Data retrieved from storage:', {
-        //     epf_number,
-        //     dateOfProduction,
-        //     divisionSection,
-        //     packingHrs,
-        //     packingQty,
-        //     sapCodes,
-        //     additionalAction,
-        //     ltNormalHours,
-        //     lossTimeOT
-        // });
+        const packingItem1 = sessionStorage.getItem('packing_Items_1');
+        const packingItem2 = sessionStorage.getItem('packing_Items_2');
+        const packingItem3 = sessionStorage.getItem('packing_Items_3');
+        const packingItem4 = sessionStorage.getItem('packing_Items_4');
+        const packingItem5 = sessionStorage.getItem('packing_Items_5');
+        const packingItem6 = sessionStorage.getItem('packing_Items_6');
+        const packingItem7 = sessionStorage.getItem('packing_Items_7');
+
+        const packingType1 = sessionStorage.getItem('packing_types_1');
+        const packingType2 = sessionStorage.getItem('packing_types_2');
+        const packingType3 = sessionStorage.getItem('packing_types_3');
+        const packingType4 = sessionStorage.getItem('packing_types_4');
+        const packingType5 = sessionStorage.getItem('packing_types_5');
+        const packingType6 = sessionStorage.getItem('packing_types_6');
+        const packingType7 = sessionStorage.getItem('packing_types_7');
+
+        const sapCodes1 = sessionStorage.getItem('sap_code_1');
+        const sapCodes2 = sessionStorage.getItem('sap_code_2');
+        const sapCodes3 = sessionStorage.getItem('sap_code_3');
+        const sapCodes4 = sessionStorage.getItem('sap_code_4');
+        const sapCodes5 = sessionStorage.getItem('sap_code_5');
+        const sapCodes6 = sessionStorage.getItem('sap_code_6');
+        const sapCodes7 = sessionStorage.getItem('sap_code_7');
+
+        const packingQty1 = sessionStorage.getItem('packing_qty_1');
+        const packingQty2 = sessionStorage.getItem('packing_qty_2');
+        const packingQty3 = sessionStorage.getItem('packing_qty_3');
+        const packingQty4 = sessionStorage.getItem('packing_qty_4');
+        const packingQty5 = sessionStorage.getItem('packing_qty_5');
+        const packingQty6 = sessionStorage.getItem('packing_qty_6');
+        const packingQty7 = sessionStorage.getItem('packing_qty_7');
+
+        const packingHrs1 = sessionStorage.getItem('packing_hrs_1');
+        const packingHrs2 = sessionStorage.getItem('packing_hrs_2');
+        const packingHrs3 = sessionStorage.getItem('packing_hrs_3');
+        const packingHrs4 = sessionStorage.getItem('packing_hrs_4');
+        const packingHrs5 = sessionStorage.getItem('packing_hrs_5');
+        const packingHrs6 = sessionStorage.getItem('packing_hrs_6');
+        const packingHrs7 = sessionStorage.getItem('packing_hrs_7');
+
+        const additionalAction1 = sessionStorage.getItem('additional_action_1');
+        const additionalAction2 = sessionStorage.getItem('additional_action_2');
+        const additionalAction3 = sessionStorage.getItem('additional_action_3');
+        const additionalAction4 = sessionStorage.getItem('additional_action_4');
+        const additionalAction5 = sessionStorage.getItem('additional_action_5');
+        const additionalAction6 = sessionStorage.getItem('additional_action_6');
+        const additionalAction7 = sessionStorage.getItem('additional_action_7');
+
+        const ltNormalHours1 = sessionStorage.getItem('loss_time_normal_1');
+        const ltNormalHours2 = sessionStorage.getItem('loss_time_normal_2');
+        const ltNormalHours3 = sessionStorage.getItem('loss_time_normal_3');
+        const ltNormalHours4 = sessionStorage.getItem('loss_time_normal_4');
+        const ltNormalHours5 = sessionStorage.getItem('loss_time_normal_5');
+        const ltNormalHours6 = sessionStorage.getItem('loss_time_normal_6');
+        const ltNormalHours7 = sessionStorage.getItem('loss_time_normal_7');
+
+        const lossTimeOT1 = sessionStorage.getItem('loss_time_ot_1');
+        const lossTimeOT2 = sessionStorage.getItem('loss_time_ot_2');
+        const lossTimeOT3 = sessionStorage.getItem('loss_time_ot_3');
+        const lossTimeOT4 = sessionStorage.getItem('loss_time_ot_4');
+        const lossTimeOT5 = sessionStorage.getItem('loss_time_ot_5');
+        const lossTimeOT6 = sessionStorage.getItem('loss_time_ot_6');
+        const lossTimeOT7 = sessionStorage.getItem('loss_time_ot_7');
 
         console.log('Data retrieved from storage:', {
             epf_number,
             dateOfProduction,
             divisionSection,
-            packingHrs,
-            packingQty,
-            sapCodes,
-            additionalAction,
-            ltNormalHours,
-            lossTimeOT,
-            packingItem,
-            packingType
+
+            packingItem1,
+            packingItem2,
+            packingItem3,
+            packingItem4,
+            packingItem5,
+            packingItem6,
+            packingItem7,
+
+            packingType1,
+            packingType2,
+            packingType3,
+            packingType4,
+            packingType5,
+            packingType6,
+            packingType7,
+
+            sapCodes1,
+            sapCodes2,
+            sapCodes3,
+            sapCodes4,
+            sapCodes5,
+            sapCodes6,
+            sapCodes7,
+
+            packingQty1,
+            packingQty2,
+            packingQty3,
+            packingQty4,
+            packingQty5,
+            packingQty6,
+            packingQty7,
+
+            packingHrs1,
+            packingHrs2,
+            packingHrs3,
+            packingHrs4,
+            packingHrs5,
+            packingHrs6,
+            packingHrs7,
+
+            additionalAction1,
+            additionalAction2,
+            additionalAction3,
+            additionalAction4,
+            additionalAction5,
+            additionalAction6,
+            additionalAction7,
+
+            ltNormalHours1,
+            ltNormalHours2,
+            ltNormalHours3,
+            ltNormalHours4,
+            ltNormalHours5,
+            ltNormalHours6,
+            ltNormalHours7,
+
+            lossTimeOT1,
+            lossTimeOT2,
+            lossTimeOT3,
+            lossTimeOT4,
+            lossTimeOT5,
+            lossTimeOT6,
+            lossTimeOT7,
+            
         });
 
         const dataToSend = {
             epf_number: epf_number,
             date_of_production: dateOfProduction, // Use snake_case to match backend expectation
             production_division: divisionSection, // Use snake_case to match backend expectation
-            packing_hrss: packingHrs, // Use snake_case to match backend expectation
-            packing_qtys: packingQty, // Use snake_case to match backend expectation
-            sap_codes: sapCodes, // Use snake_case to match backend expectation
-            additional_actions: additionalAction, // Use snake_case to match backend expectation
-            loss_time_normal_hrss: ltNormalHours, // Use snake_case to match backend expectation
-            loss_time_ots: lossTimeOT, // Use snake_case to match backend expectation
-            packing_items: packingItem, // Use snake_case to match backend expectation
-            packing_types: packingType // Use snake_case to match backend expectation
-        };
-        
+            
+            packing_item_1: packingItem1,
+            packing_item_2: packingItem2,
+            packing_item_3: packingItem3,
+            packing_item_4: packingItem4,
+            packing_item_5: packingItem5,
+            packing_item_6: packingItem6,
+            packing_item_7: packingItem7,
 
-        // Prepare the data object to send to the server
-        // const dataToSend = {
-        //     epf_number: epf_number,
-        //     dateOfProduction: dateOfProduction,
-        //     divisionSection: divisionSection,
-        //     packingHrs: packingHrs,
-        //     packingQty: packingQty,
-        //     sapCodes: sapCodes,
-        //     additionalAction: additionalAction,
-        //     ltNormalHours: ltNormalHours,
-        //     lossTimeOT: lossTimeOT
-        // };
-        
+            packing_type_1: packingType1,
+            packing_type_2: packingType2,
+            packing_type_3: packingType3,
+            packing_type_4: packingType4,
+            packing_type_5: packingType5,
+            packing_type_6: packingType6,
+            packing_type_7: packingType7,
+
+            sap_code_1: sapCodes1,
+            sap_code_2: sapCodes2,
+            sap_code_3: sapCodes3,
+            sap_code_4: sapCodes4,
+            sap_code_5: sapCodes5,
+            sap_code_6: sapCodes6,
+            sap_code_7: sapCodes7,
+
+            packing_qty_1: packingQty1,
+            packing_qty_2: packingQty2,
+            packing_qty_3: packingQty3,
+            packing_qty_4: packingQty4,
+            packing_qty_5: packingQty5,
+            packing_qty_6: packingQty6,
+            packing_qty_7: packingQty7,
+
+            packing_hrs_1: packingHrs1,
+            packing_hrs_2: packingHrs2,
+            packing_hrs_3: packingHrs3,
+            packing_hrs_4: packingHrs4,
+            packing_hrs_5: packingHrs5,
+            packing_hrs_6: packingHrs6,
+            packing_hrs_7: packingHrs7,
+
+            additional_action_1: additionalAction1,
+            additional_action_2: additionalAction2,
+            additional_action_3: additionalAction3,
+            additional_action_4: additionalAction4,
+            additional_action_5: additionalAction5,
+            additional_action_6: additionalAction6,
+            additional_action_7: additionalAction7,
+
+            loss_time_normal_hrs_1: ltNormalHours1,
+            loss_time_normal_hrs_2: ltNormalHours2,
+            loss_time_normal_hrs_3: ltNormalHours3,
+            loss_time_normal_hrs_4: ltNormalHours4,
+            loss_time_normal_hrs_5: ltNormalHours5,
+            loss_time_normal_hrs_6: ltNormalHours6,
+            loss_time_normal_hrs_7: ltNormalHours7,
+
+            loss_time_ot_1: lossTimeOT1,
+            loss_time_ot_2: lossTimeOT2,
+            loss_time_ot_3: lossTimeOT3,
+            loss_time_ot_4: lossTimeOT4,
+            loss_time_ot_5: lossTimeOT5,
+            loss_time_ot_6: lossTimeOT6,
+            loss_time_ot_7: lossTimeOT7,
+        };
 
         // Send data to the backend using Fetch API
-        fetch('http://localhost:5000/api/submit/submit-form', {
+        fetch('http://localhost:5000/api/submit/submit-production-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -12,7 +12,5 @@ exports.submitProductionData = (req, res) => {
         console.log("Data saved successfully:", result); // Confirm result
         res.status(201).json({ message: 'Production data saved successfully', data: result });
     });
-    
-
 };
 

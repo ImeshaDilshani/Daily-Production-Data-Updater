@@ -228,6 +228,7 @@ button {
     margin-top: 10px;
 }
 
+
 button:hover {
     background-color: #0056b3;
 }
@@ -367,7 +368,8 @@ button[type="submit"]:hover {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin: 20px auto;
+    margin: 150px auto;
+    margin-top: 50px;
     max-width: 250px;
     border: 1px solid #ddd;
     padding-bottom: 20px;

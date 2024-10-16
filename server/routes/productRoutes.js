@@ -8,4 +8,5 @@ router.get('/lines', productController.getAllLines);
 router.post('/search-products', productController.searchProducts);
 router.get('/packing-items-by-line', productController.getPackingItemsByLine); // New endpoint
 
+
 module.exports = router;
