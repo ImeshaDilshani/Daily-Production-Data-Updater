@@ -24,10 +24,12 @@ document.addEventListener('DOMContentLoaded', function () {
             </select>
             <br>
             <label for="LTNormalHours">Loss Time සාමාන්‍ය පැය</label>
-            <input type="time" class="lt-normal-hours" name="LTNormalHours" placeholder="The value must be a number" required>
+            <input type="text" class="LTNormalHours" name="LTNormalHours" placeholder="HH:MM" required>
             <br>
+
             <label for="LossTimeOT">Loss Time OT</label>
-            <input type="time" class="loss-time-ot" name="LossTimeOT" placeholder="The value must be a number" required>
+            <input type="text" class="LossTimeOT" name="LossTimeOT" placeholder="HH:MM" required>
+
             <br>
             <button class="cancel-btn">Cancel</button>
         `;
@@ -54,5 +56,41 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             })
             .catch(error => console.error('Failed to load activities:', error));
+
+            // Handle input and validation for HH:MM format
+    taskForm.addEventListener('input', function (e) {
+        if (e.target.matches('.LTNormalHours') || e.target.matches('.LossTimeOT')) {
+            let value = e.target.value.replace(/[^0-9]/g, '');  // Allow only numbers
+
+            // Add colon after entering 2 digits (HH)
+            if (value.length > 2) {
+                value = value.slice(0, 2) + ':' + value.slice(2);
+            }
+
+            // Limit input to 5 characters (HH:MM)
+            e.target.value = value.slice(0, 5);
+        }
+    });
+
+    taskForm.addEventListener('blur', function (e) {
+        if (e.target.matches('.LTNormalHours') || e.target.matches('.LossTimeOT')) {
+            let value = e.target.value;
+
+            // Split the value into hours and minutes
+            const [hours, minutes] = value.split(":");
+
+            // Validate hours (should be between 0 and 23)
+            if (hours && (parseInt(hours) < 0 || parseInt(hours) > 23)) {
+                alert("Please enter valid hours (0-23).");
+                e.target.value = '';
+            }
+
+            // Validate minutes (should be between 0 and 59)
+            if (minutes && (parseInt(minutes) < 0 || parseInt(minutes) > 59)) {
+                alert("Please enter valid minutes (0-59).");
+                e.target.value = '';
+            }
+        }
+    });
     }
 });

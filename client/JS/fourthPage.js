@@ -2,8 +2,8 @@ const packingItemsSelect = document.getElementById('packingItems');
 const packingTypesSelect = document.getElementById('packingTypes');
 const lineOptions = document.getElementById('lineOptions');
 
-const lineOptionsSelect = document.createElement('select'); 
-lineOptionsSelect.id = 'lineOptionsDropdown'; 
+const lineOptionsSelect = document.createElement('select');
+lineOptionsSelect.id = 'lineOptionsDropdown';
 lineOptions.appendChild(lineOptionsSelect);
 
 // Fetch lines and populate the dropdown
@@ -141,11 +141,12 @@ function createNewForm() {
     <br>
 
     <label for="packingQty">Packing Qty:</label>
-    <input type="number" class="packing-qty" name="packingQty" required>
+    <input type="number" class="packing-qty" name="packingQty" placeholder="Enter Packing Qty" required>
     <br>
 
-    <label for="packingHrs">Packing Hrs:</label>
-    <input type="time" class="packing-hrs" name="packingHrs" required>
+    <label for="packingHrs">Packing Hours:</label>
+    <input type="text" class="packing-hrs" placeholder="HH:MM" required>
+
     <br>
 
     <button class="cancel-btn">Cancel</button>
@@ -171,9 +172,40 @@ function createNewForm() {
   cancelBtn.addEventListener('click', () => {
     newForm.remove();
   });
+
+  // Apply HH:MM validation to the new packing hours input
+  const newPackingHrsInput = newForm.querySelector('.packing-hrs');
+  newPackingHrsInput.addEventListener('input', formatHHMM);
+  newPackingHrsInput.addEventListener('blur', validateHHMM);
 }
 
-function h() {
-  console.log('Navigating to packing.html');
-  window.location.href = 'fourthPage.html';
+function formatHHMM(e) {
+  let value = e.target.value.replace(/[^0-9]/g, '');  // Allow only numbers
+
+  // Add colon after entering 2 digits (HH)
+  if (value.length > 2) {
+    value = value.slice(0, 2) + ':' + value.slice(2);
+  }
+
+  // Limit input to 5 characters (HH:MM)
+  e.target.value = value.slice(0, 5);
+}
+
+function validateHHMM(e) {
+  let value = e.target.value;
+
+  // Split the value into hours and minutes
+  const [hours, minutes] = value.split(":");
+
+  // Validate hours (should be between 0 and 23)
+  if (hours && (parseInt(hours) < 0 || parseInt(hours) > 23)) {
+    alert("Please enter valid hours (0-23).");
+    e.target.value = '';
+  }
+
+  // Validate minutes (should be between 0 and 59)
+  if (minutes && (parseInt(minutes) < 0 || parseInt(minutes) > 59)) {
+    alert("Please enter valid minutes (0-59).");
+    e.target.value = '';
+  }
 }

@@ -4,25 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Packing Item and Type</title>
-    <!-- <link rel="stylesheet" href="CSS/styles.css"> -->
     <link rel="stylesheet" href="CSS/newstyles.css">
 </head>
 <body>
     <h1>දෛනික නිෂ්පාදන සටහන</h1>
     <h2>Daily Production Update</h2>
-
-    <!-- Profile Icon in the Top Right Corner -->
-    <!-- <div id="profile-icon" class="profile-icon">
-        <img src="images/3999.jpg" alt="Profile Icon">
-    </div> -->
-
-    <!-- Profile Info Dropdown -->
-    <!-- <div id="profile-dropdown" class="profile-dropdown">
-        <img id="profile-img" src="images/9548.jpg" alt="Profile Image">
-        <p id="profile-name">Full Name</p>
-        <p id="profile-epf">EPF No: 123456</p>
-        <button id="selectOtherProfileBtn">Select Other Profile</button>
-    </div> -->
 
     <form id="taskForm" >
         <label for="line">ඔයා වැඩ කරපු Line එක තෝරන්න</label>
@@ -41,11 +27,12 @@
     <br>
 
     <label for="packingQty">Packing Qty:</label>
-    <input type="number" id="packingQty" name="packingQty" required>
+    <input type="number" id="packingQty" name="packingQty" placeholder="Enter Packing Qty" required>
     <br>
 
-    <label for="packingHrs">Packing Hrs:</label>
-    <input type="time" id="packingHrs" name="packingHrs" required>
+    <label for="packingHrs">Packing Hours:</label>
+    <input type="text" id="packingHrs" placeholder="HH:MM" required>
+
     <br>
 
     <button type="button" id="repeatBtn">Add New</button>
@@ -56,11 +43,43 @@
     </form>
 
     <script src="JS/fourthPage.js"></script>
-    <script src="JS/profileDropdown.js"></script>
-    <!-- <script src="JS/dynamicForms.js"></script> -->
     <script src="JS/LossHours.js"></script>
     <script src="JS/session Storage Handler Packing Data.js"></script>
     
+    
+    <script>
+        document.getElementById("packingHrs").addEventListener("input", function (e) {
+              let value = e.target.value.replace(/[^0-9]/g, '');  // Allow only numbers
+
+                // Add colon after entering 2 digits (HH)
+                if (value.length > 2) {
+                    value = value.slice(0, 2) + ':' + value.slice(2);
+                }
+
+                // Limit input to 5 characters (HH:MM)
+                e.target.value = value.slice(0, 5);
+            });
+
+        document.getElementById("packingHrs").addEventListener("blur", function (e) {
+            let value = e.target.value;
+
+            // Split the value into hours and minutes
+            const [hours, minutes] = value.split(":");
+
+            // Validate hours (should be between 0 and 23)
+            if (hours && (parseInt(hours) < 0 || parseInt(hours) > 23)) {
+                alert("Please enter valid hours (0-23).");
+                e.target.value = '';
+            }
+
+            // Validate minutes (should be between 0 and 59)
+            if (minutes && (parseInt(minutes) < 0 || parseInt(minutes) > 59)) {
+                alert("Please enter valid minutes (0-59).");
+                e.target.value = '';
+            }
+        });
+
+    </script>
 
 </body>
 </html>
